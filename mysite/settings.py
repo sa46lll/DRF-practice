@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['175.192.165.46', '127.0.0.1', 'localhost']
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'api.apps.ApiConfig',
+    'api2.apps.Api2Config',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
