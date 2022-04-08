@@ -39,6 +39,24 @@
     - put: 리소스의 모든 것을 업데이트
     - patch: 리소스의 일부를 업데이트
 
+> Serialization
+- 직렬화 (read Operation)
+  - GET
+  - 과정
+    - instance
+    - Serializer(instance=XXX)
+    - dict
+    - json data
+    - response
+- 역직렬화 (write Operation)
+  - POST, UPDATE, DELETE, PATCH
+  - 과정
+    - json data
+    - dict
+    - Serializer(data=XXX)
+    - is_valid(), validated_data (유효성 검사)
+    - instance
+    - save()
 
 > 참고문서
 - [DRF 참고문서](https://www.cdrf.co/)
