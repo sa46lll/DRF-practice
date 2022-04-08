@@ -25,6 +25,17 @@
   - ViewSet
     - 자동으로 만들지마! 내가 다 만들께
 
+> GenericView
+- 목록 조회
+  - ListAPIView
+    - PostSerializer(instance=, many=True)
+- 특정 레코드 조회
+  - RetrieveAPIView
+    - PostSerializer(instance=, many=False)
+- 특정 레코드 생성
+  - CreateAPIView
+
+
 > 참고문서
 - [DRF 참고문서](https://www.cdrf.co/)
 - [CBV 참고문서](https://ccbv.co.uk/)
