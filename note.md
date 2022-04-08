@@ -9,3 +9,22 @@
   - 포맷 스타일 형식을 접미사나 query_string에 대한 경로 생성
     - ex) localhost:8000/api2/users/ **?format=json**
     - localhost:8000/api2/users **.json**
+
+> ViewSet
+- 상속 관계
+  - View > APIView > GenericAPIView
+- ReadOnlyModelViewSet
+  - 목록 조회 & 특정 레코드 조회 (get만 가능)
+- ModelViewSet
+  - 목록 조회 & 특정 레코드 생성/조회/수정/삭제 전부 자동으로 만들어 줌.
+    - CreateAPIView
+    - ListAPIView
+    - RetrieveAPIView
+    - UpdateAPIView
+    - DestroyAPIView
+  - ViewSet
+    - 자동으로 만들지마! 내가 다 만들께
+
+> 참고문서
+- [DRF 참고문서](https://www.cdrf.co/)
+- [CBV 참고문서](https://ccbv.co.uk/)
