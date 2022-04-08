@@ -34,6 +34,10 @@
     - PostSerializer(instance=, many=False)
 - 특정 레코드 생성
   - CreateAPIView
+- 특정 레코드 수정
+  - UpdateAPIView
+    - put: 리소스의 모든 것을 업데이트
+    - patch: 리소스의 일부를 업데이트
 
 
 > 참고문서
