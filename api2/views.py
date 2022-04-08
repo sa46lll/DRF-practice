@@ -1,9 +1,8 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, UpdateAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, GenericAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from api2.serializers import CommentSerializer, PostListSerializer, PostRetrieveSerializer, PostLikeSerializer, \
-    CateTagSerializer
+from api2.serializers import CommentSerializer, PostListSerializer, PostRetrieveSerializer, CateTagSerializer
 from blog.models import Post, Comment, Category, Tag
 
 
@@ -22,22 +21,16 @@ class CommentCreateAPIView(CreateAPIView):
     serializer_class = CommentSerializer
 
 
-class PostLikeAPIView(UpdateAPIView):
+class PostLikeAPIView(GenericAPIView):
     queryset = Post.objects.all()
-    serializer_class = PostLikeSerializer
 
-    def update(self, request, *args, **kwargs):
-        partial = kwargs.pop('partial', False)
+    # GET method
+    def get(self, request, *args, **kwargs):
         instance = self.get_object()
-        data = {'like': instance.like + 1}
-        serializer = self.get_serializer(instance, data=data, partial=partial)
-        serializer.is_valid(raise_exception=True)
-        self.perform_update(serializer)
+        instance.like += 1
+        instance.save()
 
-        if getattr(instance, '_prefetched_objects_cache', None):
-            instance._prefetched_objects_cache = {}
-
-        return Response(data['like'])
+        return Response(instance.like)
 
 
 class CateTagAPIView(APIView):
