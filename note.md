@@ -64,3 +64,27 @@
 > 참고문서
 - [DRF 참고문서](https://www.cdrf.co/)
 - [CBV 참고문서](https://ccbv.co.uk/)
+
+> ###### 단축키
+| description                  	 | KEY            	 |
+|---------------------------------|------------------|
+| 현재 기능 해제                  	 | Esc            	 |
+| Code Completion                 	 | Ctrl + Space   	 |
+| Code Completion and Import      	 | Ctrl + Space*2 	 |
+| Comment toggle                  	 | Ctrl + /       	 |
+| Copy                            	 | Ctrl + c       	 |
+| Paste                           	 | Ctrl + v       	 |
+| Cut                             	 | Ctrl + x       	 |
+| Delete Line                     	 | Ctrl + y       	 |
+| Duplicate Line                  	 | Ctrl + d       	 |
+| Save all                        	 | Ctrl + s       	 |
+| 찾기                            	 | Ctrl + f       	 |
+| 바꾸기                          	  | Ctrl + r       	 |
+| 정의한 곳으로 이동 (Ctrl+click) 	       | Ctrl + b       	 |
+| 설정 (Settings)                 	| Ctrl + Alt + s     	|
+| Navigate Back                   	| Ctrl + Alt + left  	|
+| Navigate Forward                	| Ctrl + Alt + right 	|
+| Multi cursor                    	| Alt + click        	|
+| Multi cursor (VS Code)          	| Ctrl + click       	|
+
+
