@@ -24,6 +24,9 @@
     - DestroyAPIView
   - ViewSet
     - 자동으로 만들지마! 내가 다 만들께
+    - url당 하나의 테이블만 다룰 때 (그게 아니면 genericView 가 좋다.)
+    - actions 인자 필수
+      - router를 사용하면 알아서 인자를 채워줌
 
 > GenericView
 - 목록 조회
