@@ -29,20 +29,20 @@ class CateTagSerializer(serializers.Serializer):
     tagList = serializers.ListField(child=serializers.CharField())
 
 
-# class CategorySerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Category
-#         fields = ['name']
-#
-#
-# class TagSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Tag
-#         fields = ['name']
+class PostSerializerSub(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ['id', 'title']
 
 
-# class CateTagSerializer(serializers.Serializer):
-#     cateList = CategorySerializer(many=True)
-#     tagList = TagSerializer(many=True)
+class CommentSerializerSub(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ['id', 'content', 'update_dt']
 
-        
+
+class PostSerializerDetail(serializers.Serializer):
+    post = PostRetrieveSerializer()
+    prevPost = PostSerializerSub()
+    nextPost = PostSerializerSub()
+    commentList = CommentSerializerSub(many=True)
