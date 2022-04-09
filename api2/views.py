@@ -5,6 +5,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from api.utils import obj_to_post, prev_next_post, obj_to_comment
 from api2.serializers import CommentSerializer, PostListSerializer, PostRetrieveSerializer, CateTagSerializer, \
     PostSerializerDetail
 from blog.models import Post, Comment, Category, Tag
@@ -79,6 +80,29 @@ def get_prev_next(instance):
 
 
 class PostRetrieveAPIView(RetrieveAPIView):
+
+    def get_queryset(self):
+        return Post.objects.all().select_related('category').prefetch_related('tags', 'comment_set')
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        commentList = instance.comment_set.all()
+
+        postDict = obj_to_post(instance)
+        prevDict, nextDict = prev_next_post(instance)
+        commentDict = [obj_to_comment(c) for c in commentList]
+
+        dataDict = {
+            'post': postDict,
+            'prevPost': prevDict,
+            'nextPost': nextDict,
+            'commentList': commentDict,
+        }
+
+        return Response(dataDict)
+
+    # Serializer
+    '''
     queryset = Post.objects.all()
     serializer_class = PostSerializerDetail
 
@@ -86,6 +110,7 @@ class PostRetrieveAPIView(RetrieveAPIView):
         instance = self.get_object()
         prevInstance, nextInstance = get_prev_next(instance)
         commentList = instance.comment_set.all()
+        
         data = {
             'post': instance,
             'prevPost': prevInstance,
@@ -101,3 +126,4 @@ class PostRetrieveAPIView(RetrieveAPIView):
             'format': self.format_kwarg,
             'view': self
         }
+    '''
